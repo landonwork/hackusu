@@ -1,0 +1,33 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #e8f1f9; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+Shakespearean Translator and Generator
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+
+      <h1 class="pt-5 pb-2">Welcome to the Shakespearean English translator and generator!</h1>
+
+      <p class="lead">This is the main page for Cailean Bushnell and Landon Work's HackUSU app.</p>
+
+      <h2 class="pt-5 pb-2"><a href={{ url_for('translator') }}>Go to translator</a></h1>
+      <h2 class="pt-5 pb-2"><a href={{ url_for('generator') }}>Go to generator</a></h1>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
