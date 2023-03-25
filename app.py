@@ -69,6 +69,16 @@ def translate(
 
     return generated_list[0].split('<transition> ')[1].rstrip('<end')
 
+import re
+
+def clean(text):
+  if '<end' not in text:
+    text = '. '.join(text.split('.')[:-1])
+  else:
+    text = re.sub(r'<end(oftext>)?', '.', text)
+  text = re.sub(r'[\[\]]', '', text)
+  return text
+
 def generate(
     prompt,
     entry_count=1,
@@ -121,5 +131,5 @@ def generate(
                 output_text = f"{tokenizer.decode(output_list)}<endoftext>"
                 generated_list.append(output_text)
 
-    return generated_list[0].replace('<endoftext>', '').replace('<end', '')
+    return clean(generated_list[0])
 
